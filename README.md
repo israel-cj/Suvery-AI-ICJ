@@ -5,10 +5,13 @@ This is a short project developed for the AutoML2023 competition
 You only need to create an instance of our class and a survey paper will be generated
 ```python
 import openai
+import numpy as np
 from generate_paper import LLM_paper
 
+generator_X = np.array(['Write a systematic survey or overview about the effectiveness of various scaffold cue presentation and methods to combine gradient approaches in neural tissue engineering for directed cell migration, with a focus on chemical, adhesive, mechanical, topographical, and electrical types of gradients.',
+       "Write a systematic survey or overview about the theological and philosophical implications of Thomas Aquinas' analysis of the effects of Original Sin, as presented in his work Summa Theologica.",
+       'Write a systematic survey or overview about the impact of political partisanship on COVID-19 vaccination rates and attitudes in the United States, including an analysis of how party affiliation influences beliefs in vaccine conspiracy theories, trust in government and science, and overall concern over the virus.'])
 
-sentence = "Write a systematic survey or overview about the effectiveness of incorporating discrete mathematics as a precursor to programming courses in high school and college"
 instructions = """
 - Synthesize, summarize and analyze old, as well as recent studies, always citing your sources.
 - Be mindful of not plagiarizing: when you refer to a paper, you shouldn't just summarize it, you should critically analyze it and discuss all aspects of the paper. 
@@ -24,7 +27,7 @@ myModel = LLM_paper(
     max_total_time=3600
 )
 
-generator_Y_hat = myModel.generate_papers(sentence, instructions)
+generator_Y_hat = myModel.generate_papers(generator_X, instructions)
 print('paper')
 print(generator_Y_hat)
 ```
