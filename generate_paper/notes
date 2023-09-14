@@ -1,0 +1,54 @@
+# LLM for optimization
+
+In context learning:
+An advantage is unifyin multi-modality as a single language model
+
+Traditional ML pipeline:
+-Data preprocess pipeline
+-Feature engineering
+-etc.
+
+Gradient-free optimization
+Black-box optimization (BBO)
+*Bayesian optimization
+*Reinforcement learning
+*Evolution strategy
+*Genetic algorithms
+
+WHAT CAN LLMODELS DO FOR AUTOML?
+\*Transformer architecture:
+Casual language modeling
+
+- Causual language modeling
+- Masked langague modeling
+- Hybrid objectiv
+
+Downstream applications:
+
+- Fine-tuning
+- Prompting: using for GPT-3
+
+Meta-learning:
+adapt in contes
+
+Learning per task:
+adapt via parameters
+
+- Textual data
+- Structural data
+- Numeric Data
+
+We are interested in textual data, for this one we need
+Something can be done is to exploits length-independence of the text. That is why you can train over multiple tasks
+So if we convert the data from the AutoML benchmark to optformer I would say let's use custo tokenizations as in optformer, but is hart to pretrained LLMS. Low transfer to new tasks.
+
+\*Prompt engineering
+
+Opening questions:
+
+AutoML-GATO (multi-modal data?)
+
+Open:
+
+LLM Benchmarks for AutoML
+-Fine-tunning optformer can be even better than 

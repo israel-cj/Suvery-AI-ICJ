@@ -1,9 +1,3 @@
-# Suvery-AI-ICJ
-
-This is a short project developed for the AutoML2023 competition
-
-You only need to create an instance of our class and a survey paper will be generated
-```python
 import openai
 from generate_paper import LLM_paper
 
@@ -27,4 +21,3 @@ myModel = LLM_paper(
 generator_Y_hat = myModel.generate_papers(sentence, instructions)
 print('paper')
 print(generator_Y_hat)
-```
