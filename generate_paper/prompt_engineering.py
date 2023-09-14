@@ -79,33 +79,33 @@ def generate_iterations(generator_X, instructions, model, iterations):
         },
     ]
 
-    i = 0
-    while i < iterations:
-        try:
-            first_prompt = generate_code(model, message)
-        except Exception as e:
-            print("Error in LLM API." + str(e))
-            time.sleep(60)  # Wait 1 minute before next request
-            continue
-        second_prompt = f"""
-        ```start
-        {first_prompt}
-        ```end
+    try:
+        first_prompt = generate_code(model, message)
+    except Exception as e:
+        print("Error in LLM API." + str(e))
+        time.sleep(60)  # Wait 1 minute before next request
 
-        """
-        second_message = [
+    second_prompt = f"""
+    ```start
+    {first_prompt}
+    ```end
+
+    """
+    second_message = [
         {
             "role": "system",
             "content": f"""
-            You are an expert scientist assistant creating a paper of around 1500 words including references, not more. You answer only by creating a paper in the asked format. Answer as concisely as possible.\n
-            {instructions}
-            """,
+        You are an expert scientist assistant creating a paper of around 1500 words including references, not more. You answer only by creating a paper in the asked format. Answer as concisely as possible.\n
+        {instructions}
+        """,
         },
         {
             "role": "user",
             "content": second_prompt,
         },
-        ]
+    ]
+    i = 0
+    while i < iterations:
 
         try:
             paper_json_string = generate_code(model, second_message, max_tokens=2000)
@@ -115,12 +115,24 @@ def generate_iterations(generator_X, instructions, model, iterations):
             continue
 
         try:
-            #paper = run_llm_code(
-            #    paper_json_string,
-            #)
             paper = json.loads(paper_json_string)
         except Exception as e:
             print(e)
             paper = None
+
+        if e is not None:
+            second_message += [
+                {"role": "assistant", "content": f"You are an expert scientist assistant creating a paper of around 1500 words including references, not more. You answer only by creating a paper in the asked format. Answer as concisely as possible.\n {instructions}"},
+                {
+                    "role": "user",
+                    "content": f"""The survey paper generated failed when converting the string into a json, error type: {type(e)}, error: {str(e)}.\n 
+                            Generate again the paper in the correct json format indicated earlier:
+                                        ```start
+                                        """,
+                },
+            ]
+            continue
+        if e is None:
+            break
         i = i + 1
     return paper
