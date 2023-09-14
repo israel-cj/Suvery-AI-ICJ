@@ -115,8 +115,8 @@ def generate_iterations(generator_X, instructions, model, iterations):
             continue
 
         try:
-            paper = json.loads(paper_json_string)
             e = None
+            paper = json.loads(paper_json_string)
         except Exception as e:
             print(e)
             paper = None
