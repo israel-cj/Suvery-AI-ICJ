@@ -10,11 +10,14 @@ class LLM_paper():
     def generate_papers(self, generator_X, instructions):
         paper_list = []
         for ask_q in generator_X:
-            this_paper = generate_iterations(
-                ask_q,
-                instructions,
-                self.llm_model,
-                self.iterations,
-            )
-            paper_list.append(this_paper)
+            try:
+                this_paper = generate_iterations(
+                    ask_q,
+                    instructions,
+                    self.llm_model,
+                    self.iterations,
+                )
+                paper_list.append(this_paper)
+            except:
+                paper_list.append(None)
         return np.array(paper_list)

@@ -15,7 +15,7 @@ The prompt format should be something like this:
 Write a survey paper as clear as posssible about the effectiveness of various scaffold cue presentation and methods to combine gradient approaches in neural tissue engineering for directed cell migration, with a focus on chemical, adhesive, mechanical, topographical, and electrical types of gradients.
 This survey paper must be generated in json format including the next structure:
 "
-paper = [   
+paper = [ # It is mandatory the variable being called paper   
     {"heading": "Title", "text":"..."},
     {"heading": "Abstract", "text":"..."},
     {"heading": "Introduction", "text":"..."},
@@ -28,7 +28,7 @@ paper = [
 ]
 "
 
-Consider the max lenght of the paper 1500 words including references. The json format must be correct (every head should be close correctly). Always citing your sources, the format of the references should be the standar IEEE
+Consider the max lenght of the paper 1500 words including references, and the json variable must be called 'paper'. The json format must be correct (every head should be close correctly). Always citing your sources, the format of the references should be the standar IEEE
 ```end
 
 Each prompt generated ends with "```end" and starts with "```start".
@@ -116,7 +116,7 @@ def generate_iterations(generator_X, instructions, model, iterations):
 
         try:
             e = None
-            paper = json.loads(paper_json_string)
+            paper = run_llm_code(paper_json_string)
         except Exception as e:
             print(e)
             paper = None
