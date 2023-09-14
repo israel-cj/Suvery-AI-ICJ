@@ -1,3 +1,4 @@
+import numpy as np
 from .prompt_engineering import generate_iterations
 
 class LLM_paper():
@@ -7,10 +8,13 @@ class LLM_paper():
         self.timeout = max_total_time
 
     def generate_papers(self, generator_X, instructions):
-        paper = generate_iterations(
-            generator_X,
-            instructions,
-            self.llm_model,
-            self.iterations,
-        )
-        return paper
+        paper_list = []
+        for ask_q in generator_X:
+            this_paper = generate_iterations(
+                ask_q,
+                instructions,
+                self.llm_model,
+                self.iterations,
+            )
+            paper_list.append(this_paper)
+        return np.array(paper_list)
