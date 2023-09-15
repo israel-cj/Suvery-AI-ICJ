@@ -7,7 +7,7 @@ def generate_prompt():
     prompt = """
 Given a sentence asking for a specific topic generate a prompt to create a paper of 1500 words in a json format.
 The goal is to generate a survey paper of no more than 1500 words incluiding references. 
-This prompt must make sure the paper will be generated in a correct json format, where the heading will be the parts of the paper, e.g.  if the sentence required is: 
+This prompt must make sure the paper will be generated in a correct json format, where the heading will be the parts of the paper and always using double quotas ", e.g.  if the sentence required is: 
 "Write a systematic survey or overview about the effectiveness of various scaffold cue presentation and methods to combine gradient approaches in neural tissue engineering for directed cell migration, with a focus on chemical, adhesive, mechanical, topographical, and electrical types of gradients."
 The prompt format should be something like this:
 
@@ -15,7 +15,7 @@ The prompt format should be something like this:
 Write a survey paper as clear as posssible about the effectiveness of various scaffold cue presentation and methods to combine gradient approaches in neural tissue engineering for directed cell migration, with a focus on chemical, adhesive, mechanical, topographical, and electrical types of gradients.
 This survey paper must be generated in json format including the next structure:
 "
-paper = [ # It is mandatory the variable being called paper   
+[ # It is mandatory the be a json format with double quotas " 
     {"heading": "Title", "text":"..."},
     {"heading": "Abstract", "text":"..."},
     {"heading": "Introduction", "text":"..."},
@@ -116,7 +116,8 @@ def generate_iterations(generator_X, instructions, model, iterations):
 
         try:
             e = None
-            paper = run_llm_code(paper_json_string)
+            # paper = run_llm_code(paper_json_string)
+            paper = json.loads(paper_json_string)
         except Exception as e:
             print(e)
             paper = None
@@ -155,7 +156,8 @@ def generate_iterations(generator_X, instructions, model, iterations):
             print("Error in LLM API." + str(e))
             time.sleep(60)  # Wait 1 minute before next request
         try:
-            paper = run_llm_code(paper_json_string)
+            # paper = run_llm_code(paper_json_string)
+            paper = json.loads(paper_json_string)
         except Exception as e:
             print(e)
             paper = None
