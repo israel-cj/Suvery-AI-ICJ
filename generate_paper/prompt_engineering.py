@@ -28,7 +28,7 @@ paper = [ # It is mandatory the variable being called paper
 ]
 "
 
-Consider the max lenght of the paper 1500 words including references, and the json variable must be called 'paper'. The json format must be correct (every head should be close correctly). Always citing your sources, the format of the references should be the standar IEEE
+Consider the max lenght of the paper 1500 words including references, and the json variable must be called 'paper'. The json format must be correct (every head should be close correctly), and must be use double quotes " instead of ingle quote '. Always citing your sources, the format of the references should be the standar IEEE
 ```end
 
 Each prompt generated ends with "```end" and starts with "```start".
