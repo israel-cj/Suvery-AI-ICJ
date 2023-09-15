@@ -28,7 +28,8 @@ This survey paper must be generated in json format including the next structure:
 ]
 "
 
-Consider the max lenght of the paper 1500 words including references in the format above. The json format must be correct (every head should be close correctly). Always citing your sources, the format of the references should be the standar IEEE
+Consider the max lenght of the paper 1500 words including references in the format above. The json format must be correct (every head should be close correctly). Always citing your sources, the format of the references should be the standar IEEE.
+Don't inlude the line breaks "\ n " among the sections of the paper.
 ```end
 
 Each prompt generated ends with "```end" and starts with "```start".
