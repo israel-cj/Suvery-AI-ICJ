@@ -136,4 +136,27 @@ def generate_iterations(generator_X, instructions, model, iterations):
         if e is None:
             break
         i = i + 1
+    if paper is None:
+        message = [
+                {"role": "assistant", "content": f"You are an expert scientist assistant creating a paper of around 1700 words including references, not more. You answer only by creating a paper in the asked format. Answer as concisely as possible.\n {instructions}"},
+                {
+                    "role": "user",
+                    "content": f"""
+                     ```start
+                     {generator_X}
+                     ```end
+                                        """,
+                },
+        ]
+        try:
+            paper_json_string = generate_code(model, message, max_tokens=2000)
+        except Exception as e:
+            print("Error in LLM API." + str(e))
+            time.sleep(60)  # Wait 1 minute before next request
+        try:
+            paper = run_llm_code(paper_json_string)
+        except Exception as e:
+            print(e)
+            paper = None
+
     return paper
