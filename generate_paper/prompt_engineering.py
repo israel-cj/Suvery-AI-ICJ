@@ -135,6 +135,11 @@ def generate_iterations(generator_X, instructions, model, iterations):
             ]
             continue
         if e is None:
+            # Convert the list to a JSON string
+            json_str = json.dumps(paper)
+
+            # Convert the JSON string back to a list with double-quoted keys
+            paper = json.loads(json_str.replace("'", '"'))
             break
         i = i + 1
 
@@ -158,6 +163,11 @@ def generate_iterations(generator_X, instructions, model, iterations):
         try:
             # paper = run_llm_code(paper_json_string)
             paper = json.loads(paper_json_string)
+            # Convert the list to a JSON string
+            json_str = json.dumps(paper)
+
+            # Convert the JSON string back to a list with double-quoted keys
+            paper = json.loads(json_str.replace("'", '"'))
         except Exception as e:
             print(e)
             paper = None
