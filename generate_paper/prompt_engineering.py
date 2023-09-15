@@ -159,4 +159,4 @@ def generate_iterations(generator_X, instructions, model, iterations):
             print(e)
             paper = None
 
-    return paper
+    return paper_json_string
