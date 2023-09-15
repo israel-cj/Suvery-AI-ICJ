@@ -2,9 +2,11 @@ import openai
 import numpy as np
 from generate_paper import LLM_paper
 
-generator_X = np.array(['Write a systematic survey or overview about the effectiveness of various scaffold cue presentation and methods to combine gradient approaches in neural tissue engineering for directed cell migration, with a focus on chemical, adhesive, mechanical, topographical, and electrical types of gradients.',
-       "Write a systematic survey or overview about the theological and philosophical implications of Thomas Aquinas' analysis of the effects of Original Sin, as presented in his work Summa Theologica.",
-       'Write a systematic survey or overview about the impact of political partisanship on COVID-19 vaccination rates and attitudes in the United States, including an analysis of how party affiliation influences beliefs in vaccine conspiracy theories, trust in government and science, and overall concern over the virus.'])
+generator_X = np.array([
+    'Write a systematic survey or overview about the effectiveness of various scaffold cue presentation and methods to combine gradient approaches in neural tissue engineering for directed cell migration, with a focus on chemical, adhesive, mechanical, topographical, and electrical types of gradients.',
+    "Write a systematic survey or overview about the theological and philosophical implications of Thomas Aquinas' analysis of the effects of Original Sin, as presented in his work Summa Theologica.",
+    'Write a systematic survey or overview about the impact of political partisanship on COVID-19 vaccination rates and attitudes in the United States, including an analysis of how party affiliation influences beliefs in vaccine conspiracy theories, trust in government and science, and overall concern over the virus.'
+])
 
 instructions = """
 - Synthesize, summarize and analyze old, as well as recent studies, always citing your sources.
